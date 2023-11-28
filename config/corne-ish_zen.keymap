@@ -25,12 +25,14 @@
             bindings = <&kp RA(RG(P))>;
             label = "SWIFTUI_PREVIEW_REFRESH";
         };
+
         xcode_open_file: xcode_open_file {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(O))>;
             label = "XCODE_OPEN_FILE";
         };
+
         xcode_search: xcode_search {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -50,6 +52,16 @@
             flavor = "hold-preferred";
             quick-tap-ms = <200>;
         };
+
+        tap_hold_key: tap_hold_key {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_HOLD_KEY";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            quick-tap-ms = <200>;
+        };
     };
 
     keymap {
@@ -65,10 +77,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp F     &kp P  &kp B        &kp J              &kp L  &kp U      &kp Y    &kp SEMICOLON  &kp BSPC
-&kp LCTRL  &kp A  &kp R  &kp S     &kp T  &kp G        &kp M              &kp N  &kp E      &kp I    &kp O          &kp SQT
-&kp LSHFT  &kp X  &kp C  &kp D     &kp V  &kp Z        &kp K              &kp H  &kp COMMA  &kp DOT  &kp FSLH       &kp RET
-                         &kp LGUI  &mo 1  &kp SPACE    &tap_hold 3 RG(B)  &mo 2  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp F     &kp P  &kp B        &kp J                              &kp L                  &kp U      &kp Y    &kp SEMICOLON  &kp BSPC
+&kp LCTRL  &kp A  &kp R  &kp S     &kp T  &kp G        &kp M                              &kp N                  &kp E      &kp I    &kp O          &kp SQT
+&kp LSHFT  &kp X  &kp C  &kp D     &kp V  &kp Z        &kp K                              &kp H                  &kp COMMA  &kp DOT  &kp FSLH       &kp RET
+                         &kp LGUI  &mo 1  &kp SPACE    &tap_hold_key LS(LA(LCTRL)) RG(B)  &tap_hold 2 BACKSPACE  &kp RALT
             >;
         };
 
